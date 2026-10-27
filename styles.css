@@ -25,115 +25,79 @@ body {
 }
 
 /* Scrollbar minimalista (a la derecha por defecto en el navegador) */
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { display: none; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #cccccc; border-radius: 10px; }
 ::-webkit-scrollbar-thumb:hover { background: #999999; }
 
-/* ---------------- HEADER (DOBLE BARRA Y BACKDROP) ---------------- */
-.header-backdrop {
+/* ----------------HEADER---------------- */
+
+/* styles.css */
+.main-nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
-    background-color: var(--bg-color); /* Fondo blanco tras los menús */
-    padding: var(--gap);
-    z-index: 100;
-    transition: transform 0.4s ease;
+    top: var(--gap);
+    left: var(--gap);
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px;
+    background-color: rgba(232, 231, 227, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 14px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.header-backdrop.hidden-scroll {
-        transform: translateY(-150%);
-
+.main-nav.hidden {
+    transform: translateY(calc(-100% - 30px));
+    opacity: 0;
+    pointer-events: none;
 }
 
-.header-grid {
+.nav-btn {
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #656253;
+    background-color: transparent;
+    padding: 8px 16px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn.icon-btn {
+    padding: 8px 12px;
+}
+
+.nav-btn:not(.active):hover {
+    color: #32302A;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.nav-btn.active {
+    background-color: #FFFFFF;
+    color: #32302A;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.grid-container {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     gap: var(--gap);
-    height: 64px;
+    padding: calc(64px + var(--gap)) 12px var(--gap) var(--gap);
+    width: 100%;
 }
 
-/* Cabecera Izquierda */
-.header-left {
-    grid-column: span 4;
-    background-color: var(--header-bg);
-    border-radius: var(--border-radius);
-    display: flex;
-    align-items: center;
-    padding: 8px;
+@media (max-width: 600px) {
+    .grid-container {
+        padding: calc(80px + var(--gap)) 12px var(--gap) var(--gap); 
+    }
 }
-
-/* Cabecera Derecha */
-.header-right {
-    grid-column: span 12;
-    background-color: var(--header-bg);
-    border-radius: var(--border-radius);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px;
-}
-
-.header-title {
-    padding-left: 32px;
-    font-size: 20px;
-}
-
-/* Botones cuadrados blancos del header */
-.icon-btn-square {
-    width: 48px;
-    height: 48px;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    color: var(--text-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.icon-btn-square:hover {
-    background-color: #F8F8F8;
-    transform: scale(0.96);
-}
-
-.hidden { display: none; }
-
-/* ---------------- MENU OVERLAY ---------------- */
-.menu-overlay {
-    position: fixed;
-    top: var(--gap); left: var(--gap); right: var(--gap); bottom: var(--gap);
-    background-color: var(--header-bg);
-    border-radius: var(--border-radius);
-    z-index: 90;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-}
-
-.menu-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.menu-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    text-align: center;
-}
-
-.menu-nav a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 32px;
-    transition: opacity 0.3s;
-}
-.menu-nav a:hover { opacity: 0.6; }
 
 /* ---------------- GRID PRINCIPAL ---------------- */
 /* Se elimina max-width, ahora ocupa toda la pantalla manteniendo el padding */
@@ -141,7 +105,7 @@ body {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     gap: var(--gap);
-    padding: calc(64px + var(--gap) * 3) var(--gap) var(--gap) var(--gap);
+    padding: calc(64px + var(--gap)) var(--gap) var(--gap) var(--gap);
     width: 100%;
 }
 
@@ -150,7 +114,7 @@ body {
     grid-column: span 4;
     position: sticky;
     /* Baja para no tapar el header. Si el body tiene clase header-closed, sube a 24px */
-    top: calc(64px + var(--gap) * 3);
+    top: calc(64px + var(--gap));
     align-self: start;
     display: flex;
     flex-direction: column;

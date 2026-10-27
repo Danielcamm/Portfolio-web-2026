@@ -15,23 +15,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 2. Comportamiento del Header al hacer Scroll
-    /* Reemplaza el bloque 2 en script.js por este código optimizado */
-let lastScrollTop = 0;
-const headerBackdrop = document.getElementById('header-backdrop');
+    // script.js
+document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.getElementById('main-nav');
+    let lastScroll = 0;
 
-window.addEventListener('scroll', () => {
-    let scrollTop = window.scrollY || document.documentElement.scrollTop;
-    
-    if (scrollTop > lastScrollTop && scrollTop > 50) {
-        headerBackdrop.classList.add('hidden-scroll');
-        document.body.classList.add('header-closed');
-    } else if (scrollTop < lastScrollTop) {
-        headerBackdrop.classList.remove('hidden-scroll');
-        document.body.classList.remove('header-closed');
-    }
-    
-    lastScrollTop = Math.max(0, scrollTop);
-}, { passive: true });
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+            nav.classList.remove('hidden');
+            return;
+        }
+
+        if (currentScroll > lastScroll && !nav.classList.contains('hidden')) {
+            nav.classList.add('hidden');
+        } else if (currentScroll < lastScroll && nav.classList.contains('hidden')) {
+            nav.classList.remove('hidden');
+        }
+        
+        lastScroll = currentScroll;
+    });
+});
 
     // 3. Lógica del Acordeón y Click en Botones
     const accordionItems = document.querySelectorAll('.accordion-item');
