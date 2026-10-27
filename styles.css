@@ -1,11 +1,52 @@
 /* styles.css */
 :root {
+    /* --- VARIABLES DE ESTRUCTURA Y COLOR --- */
     --bg-color: #FFFFFF;
-    --header-bg: #F0F0F0;
-    --text-color: #3C3C3C;
+    --header-bg: rgba(232, 231, 227, 0.78);
+    --text-color: #32302A;
     --gap: 24px;
+    --gap2: 16px;
     --border-radius: 8px;
     --font-family: 'Inter', sans-serif; /* Fallback para Archive */
+
+    /* --- VARIABLES DE TIPOGRAFÍA (Escritorio / Base) --- */
+    --text-base-size: 16px;
+    --text-base-weight: 350;
+    --text-base-lh: 1.4;
+
+    --text-nav-size: 16px;
+    --text-nav-weight: 300;
+    --text-nav-lh: 20px;
+
+    --text-accordion-size: 16px;
+    --text-accordion-weight: 600;
+
+    --text-h2-size: 24px;
+    --text-placeholder-size: 24px;
+}
+
+/* --- VARIABLES TIPOGRÁFICAS (Móvil < 600px) --- */
+@media (max-width: 600px) {
+    :root {
+        --text-nav-size: 13px;
+         
+        --text-base-size: 14px;
+        --text-accordion-size: 14px;
+        --text-h2-size: 20px;
+        
+    }
+}
+
+/* --- VARIABLES TIPOGRÁFICAS (Pantallas Gigantes > 1940px) --- */
+@media (min-width: 1940px) {
+    :root {
+        
+        --text-base-size: 18px;
+        --text-nav-size: 16px;
+        --text-accordion-size: 18px;
+        --text-h2-size: 24px;
+        
+    }
 }
 
 * {
@@ -18,89 +59,76 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: var(--font-family);
-    font-weight: 350;
-    font-size: 16px;
-    line-height: 1.4;
+    font-weight: var(--text-base-weight);
+    font-size: var(--text-base-size);
+    line-height: var(--text-base-lh);
     overflow-x: hidden;
 }
 
-/* Scrollbar minimalista (a la derecha por defecto en el navegador) */
-::-webkit-scrollbar { display: none; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #cccccc; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #999999; }
-
-/* ----------------HEADER---------------- */
-
-/* styles.css */
-.main-nav {
+/* ---------------- NAVEGACION ---------------- */
+.site-nav {
     position: fixed;
-    top: var(--gap);
-    left: var(--gap);
-    z-index: 1000;
+    top: 18px;
+    left: 18px;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 0;
+    width: max-content;
+    max-width: calc(100vw - 32px);
     padding: 6px;
-    background-color: rgba(232, 231, 227, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 14px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    border-radius: 18px;
+    background: rgba(214, 213, 206, 0.575);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    z-index: 100;
+    transition: transform 0.35s ease;
 }
 
-.main-nav.hidden {
-    transform: translateY(calc(-100% - 30px));
-    opacity: 0;
-    pointer-events: none;
+.site-nav.is-hidden {
+    transform: translateY(calc(-100% - 24px));
 }
 
-.nav-btn {
+.site-nav a {
+    display: block;
+    border-radius: 12px;
+    color: #32302A;
+    font-size: var(--text-nav-size);
+    line-height: var(--text-nav-lh);
+    font-weight: var(--text-nav-weight);
     text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    color: #656253;
-    background-color: transparent;
-    padding: 8px 16px;
-    border-radius: 10px;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-btn.icon-btn {
-    padding: 8px 12px;
-}
-
-.nav-btn:not(.active):hover {
-    color: #32302A;
-    background-color: rgba(255, 255, 255, 0.4);
-}
-
-.nav-btn.active {
+    white-space: nowrap;
+    transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
     background-color: #FFFFFF;
-    color: #32302A;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    gap: var(--gap);
-    padding: calc(64px + var(--gap)) 12px var(--gap) var(--gap);
-    width: 100%;
+.site-nav__logo {
+    flex: 0 0 40px;
+    width: 40px;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    background-color: transparent;
 }
 
-@media (max-width: 600px) {
-    .grid-container {
-        padding: calc(80px + var(--gap)) 12px var(--gap) var(--gap); 
-    }
+.site-nav__link {
+    padding: 10px 18px;
+    background-color: transparent;
+}
+
+.site-nav__link[aria-current="page"] {
+    background-color: transparent;
+    color:  #656253;
+}
+
+.site-nav__link:not([aria-current="page"]):hover {
+    opacity: 0.6;
+}
+
+.site-nav a:focus-visible {
+    outline: 2px solid #32302A;
+    outline-offset: 2px;
 }
 
 /* ---------------- GRID PRINCIPAL ---------------- */
-/* Se elimina max-width, ahora ocupa toda la pantalla manteniendo el padding */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
@@ -109,11 +137,14 @@ body {
     width: 100%;
 }
 
+.page-content {
+    padding: calc(70px + var(--gap)) var(--gap) var(--gap);
+}
+
 /* ---------------- SIDEBAR Y TEXTOS ---------------- */
 .sidebar {
     grid-column: span 4;
     position: sticky;
-    /* Baja para no tapar el header. Si el body tiene clase header-closed, sube a 24px */
     top: calc(64px + var(--gap));
     align-self: start;
     display: flex;
@@ -121,28 +152,41 @@ body {
     transition: top 0.4s ease;
 }
 
-body.header-closed .sidebar {
+body.nav-hidden .sidebar {
     top: var(--gap);
 }
 
 .accordion-item {
-    margin-bottom: var(--gap); /* Siempre 24px de separación entre botones */
+    margin-bottom: var(--gap2); 
+    padding-top: var(--gap2);
 }
 
 .accordion-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     background: none;
-    border: 1px solid #cacaca;
-    border-radius: 10px;
-    padding: 8px 20px;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
     font-family: var(--font-family);
-    font-size: 16px;
-    color: var(--text-color);
+    font-size: var(--text-accordion-size);
+    font-weight: var(--text-accordion-weight);
+    color: #837f6c;
     cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s;
+    transition: color 0.2s ease;
 }
 
-.accordion-btn:hover { background-color: var(--header-bg); }
-.accordion-item.active .accordion-btn { background-color: var(--header-bg); border-color: var(--header-bg); }
+.accordion-btn:hover { color: #32302A; }
+.accordion-item.active .accordion-btn { color: #32302A; }
+.accordion-item.active .accordion-btn::before {
+    width: 10px;
+    height: 10px;
+    flex: 0 0 10px;
+    border-radius: 2px;
+    background-color: #32302A;
+    content: "";
+}
 
 .accordion-content {
     max-height: 0;
@@ -151,8 +195,8 @@ body.header-closed .sidebar {
 }
 
 .accordion-content-inner {
-    padding-top: var(--gap);
-    padding-bottom: 52px; /* Genera los 52px de espacio ÚNICAMENTE cuando está abierto */
+    padding-top: var(--gap2);
+    padding-bottom: var(--gap2);
 }
 
 /* ---------------- BLOQUES DE IMAGENES ---------------- */
@@ -163,8 +207,6 @@ body.header-closed .sidebar {
     gap: var(--gap);
 }
 
-/* Al definir el aspect-ratio en la fila entera, todas las columnas internas 
-se fuerzan a medir exactamente lo mismo de alto y llegar hasta abajo */
 .block-row {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -172,7 +214,6 @@ se fuerzan a medir exactamente lo mismo de alto y llegar hasta abajo */
     width: 100%;
 }
 
-/* Proporciones relativas para mantener el diseño base sin importar el ancho */
 .row-480 { aspect-ratio: 12 / 4; }
 .row-600 { aspect-ratio: 12 / 5; }
 .row-720 { aspect-ratio: 12 / 6; }
@@ -192,8 +233,6 @@ se fuerzan a medir exactamente lo mismo de alto y llegar hasta abajo */
     height: 100%;
     object-fit: cover;
     display: block;
-    
-    
 }
 
 .block-col iframe {
@@ -203,7 +242,7 @@ se fuerzan a medir exactamente lo mismo de alto y llegar hasta abajo */
     width: 100%;
     height: 100%;
     border: none;
-   } 
+} 
 
 .col-4 { grid-column: span 4; }
 .col-6 { grid-column: span 6; }
@@ -213,26 +252,102 @@ se fuerzan a medir exactamente lo mismo de alto y llegar hasta abajo */
 .placeholder {
     width: 100%; height: 100%;
     display: flex; align-items: center; justify-content: center;
-    background-color: #D3D3D3; color: #888; font-size: 24px;
+    background-color: #D3D3D3; color: #888; 
+    font-size: var(--text-placeholder-size);
 }
 
 /* ---------------- OTROS PROYECTOS Y FOOTER ---------------- */
 .otros-proyectos { padding: var(--gap); margin-top: 60px; }
-.otros-proyectos h2 { font-size: 24px; margin-bottom: var(--gap); }
+.otros-proyectos h2 { font-size: var(--text-h2-size); margin-bottom: var(--gap); }
 .otros-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
 .footer { height: 100px; padding: var(--gap); }
 
 /* ---------------- RESPONSIVE (MÓVIL < 600px) ---------------- */
 @media (max-width: 600px) {
-    .header-grid {
-        grid-template-columns: 1fr;
-        height: auto;
+
+    /* Sustituye la regla agrupada genérica por esta: */
+    .col-4, .col-6, .col-8, .col-12 {
+        grid-column: span 1;
+        /* Eliminamos el aspect-ratio: 4 / 3; */
     }
-    .header-left, .header-right { grid-column: span 1; }
+
+    /* Asignamos las proporciones exactas del escritorio (Ancho columna / Alto fila) */
     
+    /* Fila 480 (Alto relativo: 4) */
+    .row-480 .col-6 { aspect-ratio: 6 / 4; }
+    .row-480 .col-12 { aspect-ratio: 12 / 4; }
+
+    /* Fila 600 (Alto relativo: 5) */
+    .row-600 .col-4 { aspect-ratio: 4 / 5; } /* Se vuelve completamente vertical */
+    .row-600 .col-8 { aspect-ratio: 8 / 5; } /* Se mantiene horizontal */
+    .row-600 .col-12 { aspect-ratio: 12 / 5; }
+
+    /* Fila 720 (Alto relativo: 6) */
+    .row-720 .col-12 { aspect-ratio: 12 / 6; } /* Formato panorámico */
+
+    .sidebar, .content-blocks {
+        display: contents;
+    }
+
+    /* 2. Enviamos todo al final por defecto para que los elementos sin ID no suban al principio */
+    .accordion-item, .block-row {
+        order: 99;
+    }
+
+    /* 3. Asignamos el orden exacto de intercalado */
+    .accordion-item[data-target="seccion-1"] { order: 1; }
+    .block-row[id="seccion-1"] { order: 2; }
+
+    .accordion-item[data-target="seccion-2"] { order: 3; }
+    .block-row[id="seccion-2"] { order: 4; }
+
+    .accordion-item[data-target="seccion-3"] { order: 5; }
+    .block-row[id="seccion-3"] { order: 6; }
+
+    /* --------------------------------------------------- */
+    /* ACORDEÓN SIEMPRE ABIERTO Y ESTÁTICO (SOLO MÓVIL)    */
+    /* --------------------------------------------------- */
+    
+    .accordion-content {
+        max-height: none !important; /* Anula el límite de altura del JavaScript */
+        overflow: visible;
+    }
+
+    .accordion-btn {
+        color: #32302A !important;
+        pointer-events: none; /* Desactiva clics y estado hover */
+    }
+
+    .accordion-btn::before {
+        width: 10px;
+        height: 10px;
+        flex: 0 0 10px;
+        border-radius: 2px;
+        background-color: #32302A;
+        content: "";
+    }
+
+    ----------------- NAVEGACION ---------------- */
+
+    .site-nav__link {
+        padding-right: 8px;
+        padding-left: 8px;
+        /* El font-size ahora está controlado por la variable --text-nav-size en el @media de :root */
+    }
+
+    .site-nav {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .site-nav.is-hidden {
+        transform: translateX(-50%);
+    
+    }
+
     .grid-container {
         grid-template-columns: 1fr;
-        padding-top: calc(140px + var(--gap)); 
+        padding-top: calc(70px + var(--gap));
     }
     
     .sidebar {
@@ -244,12 +359,14 @@ se fuerzan a medir exactamente lo mismo de alto y llegar hasta abajo */
     .content-blocks { grid-column: span 1; }
     .block-row { 
         grid-template-columns: 1fr; 
-        aspect-ratio: auto; /* Desactiva la proporción de la fila en móvil */
+        aspect-ratio: auto;
     }
     
     .col-4, .col-6, .col-8, .col-12 {
         grid-column: span 1;
-        aspect-ratio: 4 / 3; /* Forzar proporción individual en móvil */
+        aspect-ratio: 4 / 3;
     }
     .otros-grid { grid-template-columns: 1fr; }
+
+    
 }

@@ -1,44 +1,43 @@
 /* script.js */
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Lógica del Menú Hamburguesa
-    const menuBtn = document.getElementById('menu-btn');
-    const menuOverlay = document.getElementById('menu-overlay');
-    const hamburgerIcon = document.querySelector('.hamburger-icon');
-    const closeIcon = document.querySelector('.close-icon');
+    const nav = document.querySelector('.site-nav');
 
-    if (menuBtn) {
-        menuBtn.addEventListener('click', () => {
-            menuOverlay.classList.toggle('active');
-            hamburgerIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-        });
+    if (nav) {
+        let lastScrollY = window.scrollY;
+        let accumulatedDelta = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = Math.max(0, window.scrollY);
+            const delta = currentScrollY - lastScrollY;
+
+            if (currentScrollY <= 20) {
+                accumulatedDelta = 0;
+                nav.classList.remove('is-hidden');
+                nav.inert = false;
+                document.body.classList.remove('nav-hidden');
+            } else {
+                if (Math.sign(delta) !== Math.sign(accumulatedDelta)) {
+                    accumulatedDelta = 0;
+                }
+
+                accumulatedDelta += delta;
+
+                if (accumulatedDelta > 8 && !nav.classList.contains('is-hidden')) {
+                    nav.classList.add('is-hidden');
+                    nav.inert = true;
+                    document.body.classList.add('nav-hidden');
+                } else if (accumulatedDelta < -8 && nav.classList.contains('is-hidden')) {
+                    nav.classList.remove('is-hidden');
+                    nav.inert = false;
+                    document.body.classList.remove('nav-hidden');
+                }
+            }
+
+            lastScrollY = currentScrollY;
+        }, { passive: true });
     }
 
-    // 2. Comportamiento del Header al hacer Scroll
-    // script.js
-document.addEventListener('DOMContentLoaded', () => {
-    const nav = document.getElementById('main-nav');
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll <= 0) {
-            nav.classList.remove('hidden');
-            return;
-        }
-
-        if (currentScroll > lastScroll && !nav.classList.contains('hidden')) {
-            nav.classList.add('hidden');
-        } else if (currentScroll < lastScroll && nav.classList.contains('hidden')) {
-            nav.classList.remove('hidden');
-        }
-        
-        lastScroll = currentScroll;
-    });
-});
-
-    // 3. Lógica del Acordeón y Click en Botones
+    // Lógica del Acordeón y Click en Botones
     const accordionItems = document.querySelectorAll('.accordion-item');
     
     accordionItems.forEach(item => {
@@ -64,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Scroll Spy (Detectar en qué bloque está el usuario para abrir el texto en desktop)
+    // Scroll Spy (Detectar en qué bloque está el usuario para abrir el texto en desktop)
     const blockRows = document.querySelectorAll('.block-row[id]');
     
     if (blockRows.length > 0 && window.innerWidth > 600) {

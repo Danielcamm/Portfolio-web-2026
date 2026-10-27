@@ -13,72 +13,41 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- Fondo extendido del Header (Doble barra) -->
-    <div class="header-backdrop" id="header-backdrop">
-        <header class="header-grid">
-            <!-- Header Izquierdo (4 columnas) -->
-            <div class="header-left">
-                <button class="icon-btn-square" onclick="history.back()" aria-label="Volver">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                </button>
-            </div>
-            <!-- Header Derecho (12 columnas) -->
-            <div class="header-right">
-                <div class="header-title">Prou | Diseño de App para la desconexión digital</div>
-                <button class="icon-btn-square menu-toggle" id="menu-btn" aria-label="Menú">
-                    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-                    <svg class="close-icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                </button>
-            </div>
-        </header>
-    </div>
-
-    <!-- Menú Desplegable Móvil -->
-    <nav class="main-nav" id="main-nav">
-    <a href="index.html" class="nav-btn icon-btn active" aria-label="Inicio">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M4 18V6h4.5l7 9.5V6H20v12h-4.5L8.5 8.5V18H4z"/>
-        </svg>
-    </a>
-    <a href="#" class="nav-btn active">Experiencia</a>
-    <a href="proyectos.html" class="nav-btn">Proyectos</a>
-    <a href="#" class="nav-btn active">Más</a>
-</nav>
+    <nav class="site-nav" aria-label="Navegación principal">
+        <a class="site-nav__logo" href="index.html" aria-label="Inicio"></a>
+        <a class="site-nav__link" href="sobre-mi.html">Experiencia</a>
+        <a class="site-nav__link" href="proyectos.html" aria-current="page">Proyectos</a>
+        <a class="site-nav__link" href="otros.html">Más</a>
+    </nav>
 
     <!-- Contenedor Principal (Sin límite de ancho) -->
     <main class="grid-container">
         <!-- Sidebar: Textos y Botones (4 Columnas) -->
         <aside class="sidebar" id="sidebar">
             <div class="accordion-item active" data-target="seccion-1">
-                <button class="accordion-btn">TÍTULO 1</button>
+                <button class="accordion-btn">Desconexión digital</button>
                 <div class="accordion-content" style="max-height: 2000px;">
                     <div class="accordion-content-inner">
-                        <p>Prou es el prototipo de una aplicación diseñada para ayudar a los jóvenes a mejorar sus hábitos y su relación con las redes sociales, promoviendo la desconexión mediante el uso de interfaces que fijan el tiempo de uso, generan pausas reflexivas y muestran estadísticas de consumo.</p>
-                        <br>
-                        <p>Este proyecto corresponde al Trabajo de Fin de Grado (TFG) que desarrollé durante el último curso. Su estructura y diseño se fundamentan en entrevistas, encuestas y talleres realizados a 51 estudiantes de entre 13 y 14 años.</p>
+                        <p>Prou es un sistema de pantallas para ayudar a la autorregulación digital de preadolescentes frente al scroll infinito. Promueve la desconexión mediante el uso de interfaces que fijan el tiempo de uso, generan pausas reflexivas y muestran estadísticas de consumo.</p>
                     </div>
                 </div>
             </div>
 
             <div class="accordion-item" data-target="seccion-2">
-                <button class="accordion-btn">TÍTULO 2</button>
+                <button class="accordion-btn">UX resarch</button>
                 <div class="accordion-content">
                     <div class="accordion-content-inner">
-                        <p>Prou es el prototipo de una aplicación diseñada para ayudar a los jóvenes a mejorar sus hábitos y su relación con las redes sociales, promoviendo la desconexión mediante el uso de interfaces que fijan el tiempo de uso, generan pausas reflexivas y muestran estadísticas de consumo.</p>
-                        <br>
-                        <p>Este proyecto corresponde al Trabajo de Fin de Grado (TFG) que desarrollé durante el último curso. Su estructura y diseño se fundamentan en entrevistas, encuestas y talleres realizados a 51 estudiantes de entre 13 y 14 años.</p>
+                        <p>Para validar las decisiones de UX, se realizó un testeo previo a 51 alumnos de entre 12 y 13 años en el que se evaluaron sus hábitos de uso, los parámetros de interacción y las preferencias visuales.</p>
                     
                     </div>
                 </div>
             </div>
 
             <div class="accordion-item" data-target="seccion-3">
-                <button class="accordion-btn">TÍTULO 3</button>
+                <button class="accordion-btn">Arquitectura de la App</button>
                 <div class="accordion-content">
                     <div class="accordion-content-inner">
-                        <p>Prou es el prototipo de una aplicación diseñada para ayudar a los jóvenes a mejorar sus hábitos y su relación con las redes sociales, promoviendo la desconexión mediante el uso de interfaces que fijan el tiempo de uso, generan pausas reflexivas y muestran estadísticas de consumo.</p>
-                        <br>
-                        <p>Este proyecto corresponde al Trabajo de Fin de Grado (TFG) que desarrollé durante el último curso. Su estructura y diseño se fundamentan en entrevistas, encuestas y talleres realizados a 51 estudiantes de entre 13 y 14 años.</p>
+                        <p>Se diseñó una aplicación externa que permite al usuario comprender y gestionar de forma más consciente su actividad digital diaria, la cual se estructuró en tres pantallas principales.</p>
                     
                     </div>
                 </div>
@@ -92,7 +61,7 @@
 
             
             <!-- Bloque 1: 6 y 6 (Altura 480px rel.) -->
-            <div class="block-row row-720" id="seccion-4">
+            <div class="block-row row-720" id="seccion-1">
                 <div class="block-col col-12">
                     
                     <iframe src="https://player.vimeo.com/video/1236018371?autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100vw; pointer-events: none;" frameborder="0" allow="autoplay" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox" allow="autoplay; fullscreen" allowfullscreen></iframe>
@@ -100,18 +69,18 @@
             </div>
 
             <!-- Bloque 2: 4 y 8 (Altura 600px rel.) -->
-            <div class="block-row row-600" id="seccion-2">
+            <div class="block-row row-600" id="seccion-1">
                 <div class="block-col col-8">
                     <img src="images/system.png" alt="Imagen 1">
                 </div>
                 <div class="block-col col-4">
-                    <iframe src="https://player.vimeo.com/video/1238572340?autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100vw; height: 100%; pointer-events: none;" frameborder="0" allow="autoplay" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                    <iframe src="https://player.vimeo.com/video/1238572340?autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 150vw; height: 100%; pointer-events: none;" frameborder="0" allow="autoplay" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox" allow="autoplay; fullscreen" allowfullscreen></iframe>
                 </div>
                 
             </div>
 
             <!-- Bloque 4: 12 (Altura 720px rel.) -->
-            <div class="block-row row-720" id="seccion-4">
+            <div class="block-row row-720" id="seccion-1">
                 <div class="block-col col-12">
                     <iframe src="https://player.vimeo.com/video/1238567015?autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100vw; pointer-events: none;" frameborder="0" allow="autoplay" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox" allow="autoplay; fullscreen" allowfullscreen></iframe>
                 
@@ -119,7 +88,7 @@
             </div>
 
             <!-- Bloque 3: 8 y 4 (Altura 600px rel.) -->
-            <div class="block-row row-600" id="seccion-3">
+            <div class="block-row row-600" id="seccion-1">
                 
                 <div class="block-col col-4">
                     <img src="images/App descarga.png" alt="Imagen 3">
@@ -130,7 +99,7 @@
             </div>
 
             <!-- Bloque 4: 12 (Altura 720px rel.) -->
-            <div class="block-row row-720" id="seccion-4">
+            <div class="block-row row-720" id="seccion-2">
                 <div class="block-col col-12">
                     <img src="images/Estadisticas.png" alt="Imagen 4">
                 </div>
@@ -168,7 +137,7 @@
                 </div>
             </div>
 
-            <div class="block-row row-480" id="seccion-2">
+            <div class="block-row row-480" id="seccion-3">
                 <div class="block-col col-6">
                     <img src="images/Iconos simples 2.png" alt="Imagen 1">
                 </div>
@@ -177,7 +146,7 @@
                 </div>
             </div>
 
-            <div class="block-row row-600" id="seccion-2">
+            <div class="block-row row-600" id="seccion-3">
                 <div class="block-col col-4">
                     <img src="images/ilustraciones.gif" alt="Imagen 1">
                 </div>
@@ -186,7 +155,7 @@
                 </div>
             </div>
 
-            <div class="block-row row-600" id="seccion-2">
+            <div class="block-row row-600" id="seccion-3">
                 <div class="block-col col-8">
                     <img src="images/ilustraciones.gif" alt="Imagen 1">
                 </div>

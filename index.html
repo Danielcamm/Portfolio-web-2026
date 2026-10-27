@@ -12,25 +12,12 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <header class="header" id="main-header">
-        <button class="icon-btn" onclick="history.back()" aria-label="Volver">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        </button>
-        <div class="header-title">Menú Principal</div>
-        <button class="icon-btn menu-toggle" id="menu-btn" aria-label="Menú">
-            <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-            <svg class="close-icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-    </header>
-
-    <div class="menu-overlay" id="menu-overlay">
-        <nav class="menu-nav">
-            <a href="index.html">Inicio</a>
-            <a href="proyectos.html">Proyectos</a>
-            <a href="sobre-mi.html">Sobre mí</a>
-            <a href="otros.html">Otros</a>
-        </nav>
-    </div>
+    <nav class="site-nav" aria-label="Navegación principal">
+        <a class="site-nav__logo" href="index.html" aria-label="Inicio" aria-current="page"></a>
+        <a class="site-nav__link" href="sobre-mi.html">Experiencia</a>
+        <a class="site-nav__link" href="proyectos.html">Proyectos</a>
+        <a class="site-nav__link" href="otros.html">Más</a>
+    </nav>
 
     <main class="page-content">
         <h1>Página Principal</h1>
