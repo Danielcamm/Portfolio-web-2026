@@ -1,0 +1,183 @@
+<!-- proyectos.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prou | Diseño de App - Proyectos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Sustituto libre para la fuente Archive Light -->
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Fondo extendido del Header (Doble barra) -->
+    <div class="header-backdrop" id="header-backdrop">
+        <header class="header-grid">
+            <!-- Header Izquierdo (4 columnas) -->
+            <div class="header-left">
+                <button class="icon-btn-square" onclick="history.back()" aria-label="Volver">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+            </div>
+            <!-- Header Derecho (12 columnas) -->
+            <div class="header-right">
+                <div class="header-title">Prou | Diseño de App para la desconexión digital</div>
+                <button class="icon-btn-square menu-toggle" id="menu-btn" aria-label="Menú">
+                    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+                    <svg class="close-icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+        </header>
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    <div class="menu-overlay" id="menu-overlay">
+        <nav class="menu-nav">
+            <a href="index.html">Inicio</a>
+            <a href="proyectos.html">Proyectos</a>
+            <a href="sobre-mi.html">Sobre mí</a>
+            <a href="otros.html">Otros</a>
+        </nav>
+    </div>
+
+    <!-- Contenedor Principal (Sin límite de ancho) -->
+    <main class="grid-container">
+        <!-- Sidebar: Textos y Botones (4 Columnas) -->
+        <aside class="sidebar" id="sidebar">
+            <div class="accordion-item active" data-target="seccion-1">
+                <button class="accordion-btn">TÍTULO 1</button>
+                <div class="accordion-content" style="max-height: 2000px;">
+                    <div class="accordion-content-inner">
+                        <p>Prou es el prototipo de una aplicación diseñada para ayudar a los jóvenes a mejorar sus hábitos y su relación con las redes sociales, promoviendo la desconexión mediante el uso de interfaces que fijan el tiempo de uso, generan pausas reflexivas y muestran estadísticas de consumo.</p>
+                        <br>
+                        <p>Este proyecto corresponde al Trabajo de Fin de Grado (TFG) que desarrollé durante el último curso. Su estructura y diseño se fundamentan en entrevistas, encuestas y talleres realizados a 51 estudiantes de entre 13 y 14 años.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item" data-target="seccion-2">
+                <button class="accordion-btn">TÍTULO 2</button>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>Prou es el prototipo de una aplicación diseñada para ayudar a los jóvenes a mejorar sus hábitos y su relación con las redes sociales, promoviendo la desconexión mediante el uso de interfaces que fijan el tiempo de uso, generan pausas reflexivas y muestran estadísticas de consumo.</p>
+                        <br>
+                        <p>Este proyecto corresponde al Trabajo de Fin de Grado (TFG) que desarrollé durante el último curso. Su estructura y diseño se fundamentan en entrevistas, encuestas y talleres realizados a 51 estudiantes de entre 13 y 14 años.</p>
+                    
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item" data-target="seccion-3">
+                <button class="accordion-btn">TÍTULO 3</button>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        <p>Prou es el prototipo de una aplicación diseñada para ayudar a los jóvenes a mejorar sus hábitos y su relación con las redes sociales, promoviendo la desconexión mediante el uso de interfaces que fijan el tiempo de uso, generan pausas reflexivas y muestran estadísticas de consumo.</p>
+                        <br>
+                        <p>Este proyecto corresponde al Trabajo de Fin de Grado (TFG) que desarrollé durante el último curso. Su estructura y diseño se fundamentan en entrevistas, encuestas y talleres realizados a 51 estudiantes de entre 13 y 14 años.</p>
+                    
+                    </div>
+                </div>
+            </div>
+
+            
+        </aside>
+
+        <!-- Contenido Principal: Bloques de Imágenes (12 Columnas) -->
+        <div class="content-blocks">
+
+            
+            <!-- Bloque 1: 6 y 6 (Altura 480px rel.) -->
+            <div class="block-row row-720" id="seccion-4">
+                <div class="block-col col-12">
+                    
+                    <iframe src="https://player.vimeo.com/video/1236018371?autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100vw; pointer-events: none;" frameborder="0" allow="autoplay" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Bloque 2: 4 y 8 (Altura 600px rel.) -->
+            <div class="block-row row-600" id="seccion-2">
+                <div class="block-col col-8">
+                    <img src="images/system.png" alt="Imagen 1">
+                </div>
+                <div class="block-col col-4">
+                    <iframe src="https://player.vimeo.com/video/1238572340?autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100vw; height: 100%; pointer-events: none;" frameborder="0" allow="autoplay" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                </div>
+                
+            </div>
+
+            <!-- Bloque 4: 12 (Altura 720px rel.) -->
+            <div class="block-row row-720" id="seccion-4">
+                <div class="block-col col-12">
+                    <iframe src="https://player.vimeo.com/video/1238567015?autoplay=1&amp;muted=1&amp;loop=1&amp;background=1" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100vw; pointer-events: none;" frameborder="0" allow="autoplay" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                
+                </div>
+            </div>
+
+            <!-- Bloque 3: 8 y 4 (Altura 600px rel.) -->
+            <div class="block-row row-600" id="seccion-3">
+                
+                <div class="block-col col-4">
+                    <img src="images/App descarga.png" alt="Imagen 3">
+                </div>
+                <div class="block-col col-8">
+                    <img src="images/Mascota.gif" alt="Imagen 3">
+                </div>
+            </div>
+
+            <!-- Bloque 4: 12 (Altura 720px rel.) -->
+            <div class="block-row row-720" id="seccion-4">
+                <div class="block-col col-12">
+                    <img src="images/Estadisticas.png" alt="Imagen 4">
+                </div>
+            </div>
+
+            <!-- Bloque 5: 4, 4, 4 (Altura 600px rel.)
+            <div class="block-row row-600">
+                <div class="block-col col-4">
+                    <div class="placeholder">Imagen 5A</div>
+                </div>
+                <div class="block-col col-4">
+                    <div class="placeholder">Imagen 5B</div>
+                </div>
+                <div class="block-col col-4">
+                    <div class="placeholder">Imagen 5C</div>
+                </div>
+            </div>-->
+
+            <div class="block-row row-600" id="seccion-2">
+                <div class="block-col col-8">
+                    <img src="images/watch.png" alt="Imagen 1">
+                </div>
+                <div class="block-col col-4">
+                    <img src="images/Test.png" alt="Imagen 1">
+                </div>
+            </div>
+            
+            <!-- Bloque 2: 4 y 8 (Altura 600px rel.) -->
+            <div class="block-row row-480" id="seccion-2">
+                <div class="block-col col-6">
+                    <img src="images/Perfil.png" alt="Imagen 1">
+                </div>
+                <div class="block-col col-6">
+                    <img src="images/Slider.png" alt="Imagen 1">
+                </div>
+            </div>
+
+        
+        </div>
+    </main>
+
+    <section class="otros-proyectos">
+        <h2>Otros Proyectos</h2>
+        <div class="otros-grid">
+            <div class="placeholder" style="aspect-ratio: 16/9;">Proyecto A</div>
+            <div class="placeholder" style="aspect-ratio: 16/9;">Proyecto B</div>
+        </div>
+    </section>
+
+    <footer class="footer"></footer>
+</body>
+</html>

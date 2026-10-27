@@ -1,0 +1,291 @@
+/* styles.css */
+:root {
+    --bg-color: #FFFFFF;
+    --header-bg: #F0F0F0;
+    --text-color: #3C3C3C;
+    --gap: 24px;
+    --border-radius: 8px;
+    --font-family: 'Inter', sans-serif; /* Fallback para Archive */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-weight: 350;
+    font-size: 16px;
+    line-height: 1.4;
+    overflow-x: hidden;
+}
+
+/* Scrollbar minimalista (a la derecha por defecto en el navegador) */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cccccc; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #999999; }
+
+/* ---------------- HEADER (DOBLE BARRA Y BACKDROP) ---------------- */
+.header-backdrop {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background-color: var(--bg-color); /* Fondo blanco tras los menús */
+    padding: var(--gap);
+    z-index: 100;
+    transition: transform 0.4s ease;
+}
+
+.header-backdrop.hidden-scroll {
+        transform: translateY(-150%);
+
+}
+
+.header-grid {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: var(--gap);
+    height: 64px;
+}
+
+/* Cabecera Izquierda */
+.header-left {
+    grid-column: span 4;
+    background-color: var(--header-bg);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+/* Cabecera Derecha */
+.header-right {
+    grid-column: span 12;
+    background-color: var(--header-bg);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.header-title {
+    padding-left: 32px;
+    font-size: 20px;
+}
+
+/* Botones cuadrados blancos del header */
+.icon-btn-square {
+    width: 48px;
+    height: 48px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.icon-btn-square:hover {
+    background-color: #F8F8F8;
+    transform: scale(0.96);
+}
+
+.hidden { display: none; }
+
+/* ---------------- MENU OVERLAY ---------------- */
+.menu-overlay {
+    position: fixed;
+    top: var(--gap); left: var(--gap); right: var(--gap); bottom: var(--gap);
+    background-color: var(--header-bg);
+    border-radius: var(--border-radius);
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    text-align: center;
+}
+
+.menu-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 32px;
+    transition: opacity 0.3s;
+}
+.menu-nav a:hover { opacity: 0.6; }
+
+/* ---------------- GRID PRINCIPAL ---------------- */
+/* Se elimina max-width, ahora ocupa toda la pantalla manteniendo el padding */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: var(--gap);
+    padding: calc(64px + var(--gap) * 3) var(--gap) var(--gap) var(--gap);
+    width: 100%;
+}
+
+/* ---------------- SIDEBAR Y TEXTOS ---------------- */
+.sidebar {
+    grid-column: span 4;
+    position: sticky;
+    /* Baja para no tapar el header. Si el body tiene clase header-closed, sube a 24px */
+    top: calc(64px + var(--gap) * 3);
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    transition: top 0.4s ease;
+}
+
+body.header-closed .sidebar {
+    top: var(--gap);
+}
+
+.accordion-item {
+    margin-bottom: var(--gap); /* Siempre 24px de separación entre botones */
+}
+
+.accordion-btn {
+    background: none;
+    border: 1px solid #cacaca;
+    border-radius: 10px;
+    padding: 8px 20px;
+    font-family: var(--font-family);
+    font-size: 16px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.accordion-btn:hover { background-color: var(--header-bg); }
+.accordion-item.active .accordion-btn { background-color: var(--header-bg); border-color: var(--header-bg); }
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+.accordion-content-inner {
+    padding-top: var(--gap);
+    padding-bottom: 52px; /* Genera los 52px de espacio ÚNICAMENTE cuando está abierto */
+}
+
+/* ---------------- BLOQUES DE IMAGENES ---------------- */
+.content-blocks {
+    grid-column: span 12;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+/* Al definir el aspect-ratio en la fila entera, todas las columnas internas 
+se fuerzan a medir exactamente lo mismo de alto y llegar hasta abajo */
+.block-row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--gap);
+    width: 100%;
+}
+
+/* Proporciones relativas para mantener el diseño base sin importar el ancho */
+.row-480 { aspect-ratio: 12 / 4; }
+.row-600 { aspect-ratio: 12 / 5; }
+.row-720 { aspect-ratio: 12 / 6; }
+
+.block-col {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background-color: #EAEAEA;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.block-col img, .block-col video{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    
+    
+}
+
+.block-col iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+   } 
+
+.col-4 { grid-column: span 4; }
+.col-6 { grid-column: span 6; }
+.col-8 { grid-column: span 8; }
+.col-12 { grid-column: span 12; }
+
+.placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background-color: #D3D3D3; color: #888; font-size: 24px;
+}
+
+/* ---------------- OTROS PROYECTOS Y FOOTER ---------------- */
+.otros-proyectos { padding: var(--gap); margin-top: 60px; }
+.otros-proyectos h2 { font-size: 24px; margin-bottom: var(--gap); }
+.otros-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+.footer { height: 100px; padding: var(--gap); }
+
+/* ---------------- RESPONSIVE (MÓVIL < 600px) ---------------- */
+@media (max-width: 600px) {
+    .header-grid {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    .header-left, .header-right { grid-column: span 1; }
+    
+    .grid-container {
+        grid-template-columns: 1fr;
+        padding-top: calc(140px + var(--gap)); 
+    }
+    
+    .sidebar {
+        grid-column: span 1;
+        position: static;
+        margin-bottom: var(--gap);
+    }
+    
+    .content-blocks { grid-column: span 1; }
+    .block-row { 
+        grid-template-columns: 1fr; 
+        aspect-ratio: auto; /* Desactiva la proporción de la fila en móvil */
+    }
+    
+    .col-4, .col-6, .col-8, .col-12 {
+        grid-column: span 1;
+        aspect-ratio: 4 / 3; /* Forzar proporción individual en móvil */
+    }
+    .otros-grid { grid-template-columns: 1fr; }
+}
