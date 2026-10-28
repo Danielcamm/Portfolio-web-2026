@@ -283,7 +283,7 @@ body.nav-hidden .sidebar {
     .row-600 .col-12 { aspect-ratio: 12 / 6; }
 
     /* Fila 720 (Alto relativo: 6) */
-    .row-720 .col-12 { aspect-ratio: 12 / 6; } /* Formato panorámico */
+    .row-720 .col-12 { aspect-ratio: 12 / 7; } /* Formato panorámico */
 
     .sidebar, .content-blocks {
         display: contents;
@@ -362,6 +362,7 @@ body.nav-hidden .sidebar {
     .block-row { 
         grid-template-columns: 1fr; 
         aspect-ratio: auto;
+        gap: var(--gap2);
     }
     
     .col-4, .col-6, .col-8, .col-12 {
