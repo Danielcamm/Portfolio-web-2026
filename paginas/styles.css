@@ -280,7 +280,7 @@ body.nav-hidden .sidebar {
     /* Fila 600 (Alto relativo: 5) */
     .row-600 .col-4 { aspect-ratio: 4 / 5; } /* Se vuelve completamente vertical */
     .row-600 .col-8 { aspect-ratio: 8 / 5; } /* Se mantiene horizontal */
-    .row-600 .col-12 { aspect-ratio: 12 / 5; }
+    .row-600 .col-12 { aspect-ratio: 12 / 6; }
 
     /* Fila 720 (Alto relativo: 6) */
     .row-720 .col-12 { aspect-ratio: 12 / 6; } /* Formato panorámico */
@@ -348,6 +348,8 @@ body.nav-hidden .sidebar {
     .grid-container {
         grid-template-columns: 1fr;
         padding-top: calc(70px + var(--gap));
+        padding: calc(64px + var(--gap2)) var(--gap2) var(--gap2) var(--gap2);
+        gap: var(--gap2);
     }
     
     .sidebar {
