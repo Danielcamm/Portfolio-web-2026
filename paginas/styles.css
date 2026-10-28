@@ -26,7 +26,7 @@
 }
 
 /* --- VARIABLES TIPOGRÁFICAS (Móvil < 600px) --- */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     :root {
         --text-nav-size: 13px;
          
@@ -175,6 +175,7 @@ body.nav-hidden .sidebar {
     color: #837f6c;
     cursor: pointer;
     transition: color 0.2s ease;
+    text-align: left;
 }
 
 .accordion-btn:hover { color: #32302A; }
@@ -263,7 +264,7 @@ body.nav-hidden .sidebar {
 .footer { height: 100px; padding: var(--gap); }
 
 /* ---------------- RESPONSIVE (MÓVIL < 600px) ---------------- */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
 
     /* Sustituye la regla agrupada genérica por esta: */
     .col-4, .col-6, .col-8, .col-12 {
@@ -274,12 +275,12 @@ body.nav-hidden .sidebar {
     /* Asignamos las proporciones exactas del escritorio (Ancho columna / Alto fila) */
     
     /* Fila 480 (Alto relativo: 4) */
-    .row-480 .col-6 { aspect-ratio: 6 / 4; }
+    .row-480 .col-6 { aspect-ratio: 6 / 5; }
     .row-480 .col-12 { aspect-ratio: 12 / 4; }
 
     /* Fila 600 (Alto relativo: 5) */
     .row-600 .col-4 { aspect-ratio: 4 / 5; } /* Se vuelve completamente vertical */
-    .row-600 .col-8 { aspect-ratio: 8 / 5; } /* Se mantiene horizontal */
+    .row-600 .col-8 { aspect-ratio: 8 / 6; } /* Se mantiene horizontal */
     .row-600 .col-12 { aspect-ratio: 12 / 6; }
 
     /* Fila 720 (Alto relativo: 6) */
