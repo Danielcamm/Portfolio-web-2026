@@ -10,8 +10,8 @@
     --font-family: 'Inter', sans-serif; /* Fallback para Archive */
 
     /* --- VARIABLES DE TIPOGRAFÍA (Escritorio / Base) --- */
-    --text-base-size: 14px;
-    --text-base-weight: 350;
+    --text-base-size: 16px;
+    --text-base-weight: 400;
     --text-base-lh: 1.4;
 
     --text-nav-size: 14px;
@@ -23,30 +23,36 @@
 
     --text-h2-size: 14px;
     --text-placeholder-size: 16px;
+    --text-h0-size: 60px;
 }
 
 /* --- VARIABLES TIPOGRÁFICAS (Móvil < 600px) --- */
 @media (max-width: 800px) {
     :root {
         --text-nav-size: 13px;
-         
         --text-base-size: 14px;
         --text-accordion-size: 14px;
         --text-h2-size: 20px;
+        --text-h0-size: 32px;
         
     }
 }
 
 /* --- VARIABLES TIPOGRÁFICAS (Pantallas Gigantes > 1940px) --- */
 @media (min-width: 1940px) {
+    .project-header-row {
+    margin-top: 420px;
+}
     :root {
         
-        --text-base-size: 18px;
+        --text-base-size: 20px;
         --text-nav-size: 16px;
         --text-accordion-size: 18px;
         --text-h2-size: 24px;
+        --text-h0-size: 80px;
         
-    }
+        
+}
 }
 
 * {
@@ -63,6 +69,76 @@ body {
     font-size: var(--text-base-size);
     line-height: var(--text-base-lh);
     overflow-x: hidden;
+}
+
+/* ---------------- PORTADA DE PROYECTOS ---------------- */
+.project-header-row {
+    grid-column: span 16;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: var(--gap);
+    margin-top: 320px; 
+    margin-bottom: 40px; 
+    align-items: end;
+}
+
+.project-title {
+    grid-column: 1 / 9; /* Ocupa exactamente de la columna 1 a la 8 */
+    font-size: var(--text-h0-size);
+    font-weight: 350;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-color);
+}
+
+.project-meta {
+    grid-column: 11 / 17; /* Empieza en la columna 11 y termina en la 16 */
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Subdivisión para encajar con el grid principal */
+    gap: var(--gap);
+}
+
+.meta-col {
+    grid-column: span 2; /* Cada bloque ocupa 2 columnas (11-12, 13-14, 15-16) */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meta-title {
+    color: rgba(50, 48, 42, 0.45); /* Mismo tono oscuro pero clarito/transparente */
+    font-family: var(--font-family);
+    font-size: var(--text-base-size);
+    font-weight: var(--text-base-weight)
+}
+
+.meta-item {
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: var(--text-base-size);
+    font-weight: var(--text-base-weight)
+}
+
+.project-cover {
+    grid-column: span 16;
+    height: auto; 
+    aspect-ratio: 1872 / 738; 
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    background-color: #EAEAEA;
+    
+    min-height: 0; /* Previene que el grid fuerce la altura original */
+}
+
+.project-cover img, .project-cover video {
+    position: absolute; /* Extrae el archivo del flujo del grid */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* ---------------- NAVEGACION ---------------- */
@@ -133,7 +209,7 @@ body {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     gap: var(--gap);
-    padding: calc(64px + var(--gap)) var(--gap) var(--gap) var(--gap);
+    padding: var(--gap2);
     width: 100%;
 }
 
@@ -348,8 +424,8 @@ body.nav-hidden .sidebar {
 
     .grid-container {
         grid-template-columns: 1fr;
-        padding-top: calc(70px + var(--gap));
-        padding: calc(64px + var(--gap2)) var(--gap2) var(--gap2) var(--gap2);
+        
+        padding: var(--gap2);
         gap: var(--gap2);
     }
     
@@ -372,5 +448,36 @@ body.nav-hidden .sidebar {
     }
     .otros-grid { grid-template-columns: 1fr; }
 
+    /* Ajustes móviles para la portada */
+    .project-header-row {
+        grid-template-columns: 1fr;
+        margin-top: 120px; /* Reducción de la separación superior */
+        margin-bottom: 32px;
+        gap: 40px;
+    }
+
+    .project-title {
+        grid-column: span 1;
+        font-size: var(--text-h0-size);
+    }
+
+    .project-meta {
+        grid-column: span 1;
+        display: flex; /* Vuelve a flexbox en móvil para que fluya hacia abajo */
+        flex-wrap: wrap; 
+        gap: 32px;
+    }
+
+    .project-cover {
+        
+        height: auto; 
+        aspect-ratio: 3 / 2; /* Formato horizontal en lugar de vertical */
+        
+    }
+}
+    @media (min-width: 1940px) {
+    .project-header-row {
+        margin-top: 480px;
+    }
     
 }
