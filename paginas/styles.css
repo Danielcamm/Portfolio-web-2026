@@ -178,12 +178,23 @@ body {
 }
 
 .site-nav__logo {
-    flex: 0 0 40px;
-    width: 40px;
-    aspect-ratio: 1 / 1;
-    padding: 0;
-    background-color: transparent;
-}
+        flex: 0 0 40px;
+        width: 40px;
+        aspect-ratio: 1 / 1;
+        padding: 8px;
+        background-color: transparent;
+       
+    }
+
+    .site-nav__logo img,
+    .site-nav__logo svg {
+        width: 100%; /* Reduce el tamaño visual */
+        height: 100%; /* Reduce el tamaño visual */
+        object-fit: contain;
+        object-position: center;
+        display: block;
+        margin: auto; /* Crea el margen automático al centrar */
+    }
 
 .site-nav__link {
     padding: 12px 12px;
